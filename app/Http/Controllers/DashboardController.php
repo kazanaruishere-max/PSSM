@@ -46,8 +46,8 @@ class DashboardController extends Controller
 
     private function teacherDashboard(User $user)
     {
-        // Get classes teacher is assigned to (via class_subjects pivot)
-        $classIds = DB::table('class_subjects')->where('teacher_id', $user->id)->pluck('class_id');
+        // Get classes teacher is assigned to (via class_subject pivot)
+        $classIds = DB::table('class_subject')->where('teacher_id', $user->id)->pluck('class_id');
         $classesCount = Classes::whereIn('id', $classIds)->count();
 
         // Get count of assignments that have ungraded submissions
