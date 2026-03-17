@@ -95,6 +95,25 @@ php artisan serve
 
 ---
 
+## 🌍 Production Deployment
+
+Deployment has been automated via `deploy.sh`. Before running the script, ensure your production server meets these requirements:
+
+1. **Environment Variables**:
+   - `APP_ENV=production`
+   - `APP_DEBUG=false`
+   - Cache divers configured (e.g., `CACHE_STORE=redis`)
+   - Queue connection configured (e.g., `QUEUE_CONNECTION=redis`)
+2. **Permissions**: Make the script executable `chmod +x deploy.sh`
+3. **Queue Workers**: Ensure a process monitor like Supervisor is keeping `php artisan queue:work` or `php artisan horizon` running.
+
+To deploy a new update:
+```bash
+./deploy.sh
+```
+
+---
+
 ## 📊 Tech Stack Overview
 
 | Layer | Technology |
