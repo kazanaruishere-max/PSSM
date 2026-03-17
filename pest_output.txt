@@ -1,0 +1,389 @@
+
+   PASS  Tests\Unit\ExampleTest
+  Γ£ô that true is true                                                                                          0.01s  
+
+   FAIL  Tests\Feature\Auth\AuthenticationTest
+  Γ£ô login screen can be rendered                                                                               0.50s  
+  Γ¿» users can authenticate using the login screen                                                              0.09s  
+  Γ¿» users can not authenticate with invalid password                                                           0.06s  
+  Γ¿» users can logout                                                                                           0.05s  
+
+   FAIL  Tests\Feature\Auth\EmailVerificationTest
+  Γ¿» email verification screen can be rendered                                                                  0.06s  
+  Γ¿» email can be verified                                                                                      0.06s  
+  Γ¿» email is not verified with invalid hash                                                                    0.06s  
+
+   FAIL  Tests\Feature\Auth\PasswordConfirmationTest
+  Γ¿» confirm password screen can be rendered                                                                    0.06s  
+  Γ¿» password can be confirmed                                                                                  0.06s  
+  Γ¿» password is not confirmed with invalid password                                                            0.05s  
+
+   FAIL  Tests\Feature\Auth\PasswordResetTest
+  Γ£ô reset password link screen can be rendered                                                                 0.06s  
+  Γ¿» reset password link can be requested                                                                       0.06s  
+  Γ¿» reset password screen can be rendered                                                                      0.06s  
+  Γ¿» password can be reset with valid token                                                                     0.06s  
+
+   FAIL  Tests\Feature\Auth\PasswordUpdateTest
+  Γ¿» password can be updated                                                                                    0.06s  
+  Γ¿» correct password must be provided to update password                                                       0.05s  
+
+   PASS  Tests\Feature\Auth\RegistrationTest
+  Γ£ô registration screen can be rendered                                                                        0.06s  
+  Γ£ô new users can register                                                                                     0.08s  
+
+   PASS  Tests\Feature\ExampleTest
+  Γ£ô it returns a successful response                                                                           0.06s  
+
+   FAIL  Tests\Feature\ProfileTest
+  Γ¿» profile page is displayed                                                                                  0.06s  
+  Γ¿» profile information can be updated                                                                         0.06s  
+  Γ¿» email verification status is unchanged when the email address is unchanged                                 0.06s  
+  Γ¿» user can delete their account                                                                              0.06s  
+  Γ¿» correct password must be provided to delete account                                                        0.06s  
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\AuthenticationTest > users can authenticate using the login screen     QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Cindy McLaughlin I, swaniawski.ignatius@example.com, 2026-03-17 03:36:48, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, YfFuSiOgBr, 2026-03-17 03:36:48, 2026-03-17 03:36:48))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\AuthenticationTest > users can not authenticate with invalid passworΓÇª  QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Gust Green MD, betsy.morar@example.net, 2026-03-17 03:36:48, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, VhJSJ5HUFX, 2026-03-17 03:36:48, 2026-03-17 03:36:48))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\AuthenticationTest > users can logout                                  QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Earnestine Kihn, ziemann.tad@example.org, 2026-03-17 03:36:48, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, cDLoOxlmu1, 2026-03-17 03:36:48, 2026-03-17 03:36:48))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\EmailVerificationTest > email verification screen can be rendered      QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Janae Predovic, mariane56@example.com, ?, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, fNPTPnFNEs, 2026-03-17 03:36:48, 2026-03-17 03:36:48))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\EmailVerificationTest > email can be verified                          QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Mr. Gilbert McClure II, langosh.ted@example.com, ?, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, rk4NBsEdvr, 2026-03-17 03:36:48, 2026-03-17 03:36:48))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\EmailVerificationTest > email is not verified with invalid hash        QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Alek Altenwerth, sawayn.eunice@example.net, ?, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, 3aMzq1z9Ht, 2026-03-17 03:36:48, 2026-03-17 03:36:48))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordConfirmationTest > confirm password screen can be rendered     QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Erling Terry, wdibbert@example.org, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, R6cvMRMS3E, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordConfirmationTest > password can be confirmed                   QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Carli Greenfelder, sfadel@example.org, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, o0mado3Tty, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordConfirmationTest > password is not confirmed with invalid paΓÇª  QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Alberto Kulas, coralie.tremblay@example.org, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, jiEoj7Rxni, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordResetTest > reset password link can be requested               QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Cornelius Fritsch, corkery.alysa@example.net, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, F8ryPTHe8o, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordResetTest > reset password screen can be rendered              QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Dr. Kristopher Gutkowski Jr., snolan@example.com, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, K7OGe6rU3W, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordResetTest > password can be reset with valid token             QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Evert Tremblay, fbahringer@example.com, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, 4Keu8Wktr0, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordUpdateTest > password can be updated                           QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Cicero Morar III, kaleb97@example.com, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, RrbGBFyQUZ, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\Auth\PasswordUpdateTest > correct password must be provided to update pasΓÇª  QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Harrison Wilkinson, sandy.beier@example.com, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, fNxa4fWiLF, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\ProfileTest > profile page is displayed                                     QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Mr. Ottis Ferry I, llangworth@example.net, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, SrKWOSEHpX, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\ProfileTest > profile information can be updated                            QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Prof. Liana Rippin, evie.grant@example.net, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, jHZnQWp6hR, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\ProfileTest > email verification status is unchanged when the email addreΓÇª  QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Dr. Arnulfo Moen PhD, luettgen.alford@example.com, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, vKdkdV2fyl, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\ProfileTest > user can delete their account                                 QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Don Gutkowski, nolan.jones@example.net, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, vPcdDxabtS, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+  ΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇΓöÇ  
+   FAILED  Tests\Feature\ProfileTest > correct password must be provided to delete account           QueryException   
+  SQLSTATE[23000]: Integrity constraint violation: 19 NOT NULL constraint failed: users.role (Connection: sqlite, Database: :memory:, SQL: insert into "users" ("name", "email", "email_verified_at", "password", "remember_token", "updated_at", "created_at") values (Isom Feest, lloyd.grady@example.com, 2026-03-17 03:36:49, $2y$04$fyIbAe8fIumSsNVdihNroewCtP.2/Tz1wOJBhjqzE6cSJluV9jHUW, WijTq6zGfu, 2026-03-17 03:36:49, 2026-03-17 03:36:49))
+
+  at vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+    580Γûò             $this->bindValues($statement, $this->prepareBindings($bindings));
+    581Γûò 
+    582Γûò             $this->recordsHaveBeenModified();
+    583Γûò 
+  Γ₧£ 584Γûò             return $statement->execute();
+    585Γûò         });
+    586Γûò     }
+    587Γûò 
+    588Γûò     /**
+
+  1   vendor\laravel\framework\src\Illuminate\Database\Connection.php:584
+  2   vendor\laravel\framework\src\Illuminate\Database\Connection.php:827
+
+
+  Tests:    19 failed, 6 passed (8 assertions)
+  Duration: 2.10s
+

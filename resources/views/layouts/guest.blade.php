@@ -25,6 +25,10 @@
             <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
                 {{ $slot }}
             </div>
+            <div class="mt-8 text-center text-sm text-gray-500 pb-8">
+                &copy; {{ date('Y') }} PSSM. Hak Cipta Dilindungi Undang-Undang.<br>
+                Hak kepemilikan penuh berada pada Pembuat/Developer. Berlisensi MIT.
+            </div>
         </div>
     </body>
 </html>

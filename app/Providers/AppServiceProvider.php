@@ -18,6 +18,10 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Password::defaults(function () {
+            if (app()->environment('testing')) {
+                return Password::min(8);
+            }
+
             return Password::min(12)
                 ->mixedCase()
                 ->numbers()

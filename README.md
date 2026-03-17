@@ -113,9 +113,14 @@ php artisan serve
 
 ---
 
-## 📄 License
+## 📄 License & Ownership
 
-MIT License — © 2026 PSSM Team
+**MIT License** — © 2026 PSSM Team / Developer (Pembuat).
+
+**Deklarasi Kepemilikan:**
+Seluruh hak kepemilikan (ownership) dan hak kekayaan intelektual atas source code, desain database, arsitektur, dan seluruh dokumen terkait project PSSM ini adalah mutlak dan sepenuhnya milik Pembuat / Developer asli. 
+
+Penggunaan, modifikasi, dan distribusi perangkat lunak ini tunduk pada syarat dan ketentuan dari [MIT License](LICENSE).
 
 ---
 
