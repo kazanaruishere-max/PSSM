@@ -69,7 +69,7 @@
                             <span class="flex-shrink-0 bg-indigo-100 text-indigo-800 font-bold w-10 h-10 rounded-full flex items-center justify-center mr-4 text-lg border border-indigo-200">
                                 {{ $index + 1 }}
                             </span>
-                            <div class="text-lg text-gray-800 font-medium leading-relaxed pt-1 whitespace-pre-line">{{ $q->question }}</div>
+                            <div class="text-lg text-gray-800 font-medium leading-relaxed pt-1 whitespace-pre-line">{{ $q->question_text }}</div>
                         </div>
 
                         <div class="pl-14 space-y-3 mt-4">

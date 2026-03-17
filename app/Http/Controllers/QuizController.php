@@ -89,13 +89,13 @@ class QuizController extends Controller
                 foreach ($aiQuestions as $q) {
                     QuizQuestion::create([
                         'quiz_id' => $quiz->id,
-                        'question' => $q['question'],
+                        'question_text' => $q['question'],
                         'question_type' => 'multiple_choice',
                         'options' => $q['options'],
                         'correct_answer_hash' => Hash::make($q['correct_answer']), // HASHED
                         'explanation' => $q['explanation'] ?? null,
                         'points' => 10,
-                        'order' => $order++
+                        'order_number' => $order++
                     ]);
                 }
             }

@@ -85,7 +85,7 @@
                 <div x-show="expanded" x-collapse class="p-6">
                     @forelse($quiz->questions as $index => $q)
                         <div class="mb-6 pb-6 border-b last:border-b-0 last:mb-0 last:pb-0">
-                            <h4 class="font-bold text-gray-800 mb-2">{{ $index + 1 }}. {{ $q->question }}</h4>
+                            <h4 class="font-bold text-gray-800 mb-2">{{ $index + 1 }}. {{ $q->question_text }}</h4>
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-2 mt-2">
                                 @if(is_array($q->options))
                                     @foreach($q->options as $key => $option)
