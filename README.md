@@ -24,42 +24,29 @@ Institusi pendidikan saat ini seringkali terjebak dalam tumpukan kertas (Paper-b
 - [x] AI Quiz Generator (Multiple Choice).
 - [x] AI Essay Feedback (Analisis Naratif).
 - [x] Export Rapor PDF & Data CSV.
-
-### **Fase 2: Interaksi & Mobilitas (Q3 2026 🔜)**
-- [ ] Integrasi WhatsApp Gateway (Fonnte) untuk notifikasi tugas.
-- [ ] Progressive Web App (PWA) untuk akses offline ringan.
-- [ ] Modul Pembayaran SPP Digital.
-
-### **Fase 3: Smart Analytics (Q4 2026 🔜)**
-- [ ] AI Predictive Analytics (Deteksi dini siswa yang berisiko tertinggal).
-- [ ] Parent Portal Mobile App.
+- [x] Keamanan Hashed Quiz & Private Storage.
 
 ---
 
-## 🛠️ Alur Kerja (Workflow)
+## 🏗️ Alur Kerja Sistem (Master Workflow)
 
-### **1. Workflow Guru (Pembuatan Kuis AI)**
-```mermaid
-graph LR
-    A[Guru Input Topik] --> B{AI Engine}
-    B --> C[Generate Soal JSON]
-    C --> D[Simpan ke DB]
-    D --> E[Siswa Mengerjakan]
-    E --> F[Auto-Grading Hash]
-```
+PSSM dirancang dengan alur kerja yang terintegrasi dari instalasi hingga operasional harian. Berikut adalah gambaran besarnya:
 
-### **2. Workflow Siswa (Ujian CBT)**
 ```mermaid
 graph TD
-    Start[Login Siswa] --> Dashboard[Dashboard Aktif]
-    Dashboard --> SelectQuiz[Pilih Kuis]
-    SelectQuiz --> Validation{Cek Sisa Attempt & Waktu}
-    Validation -- Valid --> Interface[CBT Interface Lock]
-    Validation -- Invalid --> Reject[Akses Ditolak]
-    Interface --> Timer[Timer Berjalan]
-    Timer --> Submit[Kirim Jawaban]
-    Submit --> Result[Nilai Muncul Instan]
+    A[Instalasi & Deployment] --> B[Onboarding Data Master]
+    B --> C[Aktivitas Akademik Harian]
+    C --> D[Evaluasi & Ujian CBT AI]
+    D --> E[Pelaporan & Rapor PDF]
+    E --> F[Arsip & Penutupan Semester]
 ```
+
+### **Detail Aktivitas:**
+1.  **Deployment:** Setup server Laravel 12 & PostgreSQL 16.
+2.  **Onboarding:** Admin mengimpor data guru/siswa via Excel secara massal.
+3.  **Harian:** Guru melakukan absensi mobile & posting materi/tugas.
+4.  **Ujian:** AI membantu guru membuat soal; Siswa mengerjakan di mode CBT yang terkunci.
+5.  **Rapor:** Sistem menghitung nilai otomatis & menghasilkan PDF Rapor profesional.
 
 ---
 
