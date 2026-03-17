@@ -114,11 +114,9 @@ php artisan serve
 
 ---
 
-## 📜 Dokumen Pendukung (Project Documents)
-- [Tata Tertib Kode (Code of Conduct)](CODE_OF_CONDUCT.md)
-- [Panduan Kontribusi (Contributing)](CONTRIBUTING.md)
-- [Kebijakan Keamanan (Security Policy)](SECURITY.md)
-- [Lisensi MIT](LICENSE)
+## 📜 Dokumen Lengkap & Jurnal Teknis
+Untuk pembahasan mendalam mengenai filosofi, arsitektur keamanan, dan workflow sistem secara menyeluruh (artikel & jurnal 1000+ baris), silakan baca:
+👉 **[JURNAL TEKNIS PSSM (The Ultimate Guide)](docs/JOURNAL.md)**
 
 ---
 
