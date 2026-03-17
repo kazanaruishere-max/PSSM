@@ -106,7 +106,7 @@ class ClassController extends Controller
             abort(403);
         }
 
-        $class->load(['academicYear', 'homeroomTeacher', 'subjects.teachers', 'students.studentProfile']);
+        $class->load(['academicYear', 'homeroomTeacher', 'subjects', 'students.studentProfile']);
         
         // Get all active students not already in this class
         $enrolledStudentIds = $class->students->pluck('id')->toArray();
