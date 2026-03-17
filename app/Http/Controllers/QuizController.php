@@ -124,7 +124,7 @@ class QuizController extends Controller
         }
 
         // Teacher / Admin view
-        $quiz->load(['questions' => function($q) { $q->orderBy('order', 'asc'); }]);
+        $quiz->load(['questions' => function($q) { $q->orderBy('order_number', 'asc'); }]);
         $attempts = $quiz->attempts()->with('student')->latest()->get();
 
         return view('quizzes.teacher_show', compact('quiz', 'attempts'));
@@ -168,7 +168,7 @@ class QuizController extends Controller
             abort(403, 'Akses ditolak atau kuis sudah selesai.');
         }
 
-        $questions = $quiz->questions()->orderBy('order', 'asc')->get();
+        $questions = $quiz->questions()->orderBy('order_number', 'asc')->get();
 
         // Calculate time left safely
         $elapsed = $attempt->started_at->diffInSeconds(now());

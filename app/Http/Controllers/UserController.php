@@ -8,6 +8,7 @@ use App\Models\TeacherProfile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Validation\Rules\Password;
 use Spatie\Permission\Models\Role;
 use Illuminate\Validation\Rule;
 
@@ -40,7 +41,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => 'required|string|lowercase|email|max:255|unique:'.User::class,
-            'password' => 'required|string|min:8',
+            'password' => ['required', 'string', Password::min(12)->mixedCase()->numbers()->symbols()],
             'role' => 'required|in:super_admin,teacher,student',
             
             // Teacher fields
@@ -94,7 +95,7 @@ class UserController extends Controller
             return redirect()->route('users.index')->with('success', 'User berhasil ditambahkan.');
         } catch (\Exception $e) {
             DB::rollBack();
-            return back()->with('error', 'Terjadi kesalahan: ' . $e->getMessage())->withInput();
+            return back()->with('error', 'Terjadi kesalahan saat memproses data. Silakan coba lagi.')->withInput();
         }
     }
 
@@ -107,7 +108,7 @@ class UserController extends Controller
         $validated = $request->validate([
             'name' => 'required|string|max:255',
             'email' => ['required', 'string', 'lowercase', 'email', 'max:255', Rule::unique(User::class)->ignore($user->id)],
-            'password' => 'nullable|string|min:8', // Only update if filled
+            'password' => ['nullable', 'string', Password::min(12)->mixedCase()->numbers()->symbols()],
             'is_active' => 'sometimes|boolean',
             
             // Teacher fields

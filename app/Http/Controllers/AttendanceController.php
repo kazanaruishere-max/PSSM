@@ -93,6 +93,18 @@ class AttendanceController extends Controller
             'attendances.*.notes' => 'nullable|string|max:255',
         ]);
 
+        // Fix #11: Verify teacher actually teaches this class/subject combo
+        if ($user->isTeacher()) {
+            $canTeach = $user->taughtSubjects()
+                ->where('class_id', $request->class_id)
+                ->where('subject_id', $request->subject_id)
+                ->exists();
+
+            if (!$canTeach) {
+                abort(403, 'Anda tidak mengajar mata pelajaran ini di kelas tersebut.');
+            }
+        }
+
         foreach ($request->attendances as $studentId => $data) {
             Attendance::updateOrCreate(
                 [

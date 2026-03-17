@@ -87,10 +87,7 @@ class User extends Authenticatable
         return $this->hasMany(Announcement::class, 'author_id');
     }
 
-    public function notifications()
-    {
-        return $this->hasMany(Notification::class);
-    }
+    // notifications() is provided by the Notifiable trait — do NOT override it
 
     // ── Scopes ──
 

@@ -51,7 +51,7 @@ class UserControllerTest extends TestCase
         $response = $this->actingAs($this->superAdmin)->post(route('users.store'), [
             'name' => 'Guru Budiman',
             'email' => 'budiman@example.com',
-            'password' => 'password123',
+            'password' => 'Str0ng@Pass!23',
             'role' => 'teacher',
             'teacher_id_number' => '123456789',
             'specialization' => 'Matematika',
@@ -76,7 +76,7 @@ class UserControllerTest extends TestCase
         $response = $this->actingAs($this->superAdmin)->post(route('users.store'), [
             'name' => 'Siswa Teladan',
             'email' => 'siswa@example.com',
-            'password' => 'password123',
+            'password' => 'Str0ng@Pass!23',
             'role' => 'student',
             'student_id_number' => '987654321',
             'date_of_birth' => '2010-01-01',

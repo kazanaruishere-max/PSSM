@@ -16,7 +16,17 @@ class NotificationController extends Controller
     {
         $notification = $request->user()->notifications()->findOrFail($id);
         $notification->markAsRead();
-        return redirect($notification->data['url'] ?? route('notifications.index'));
+
+        // Fix #7: Prevent open redirect — only redirect to internal URLs
+        $url = $notification->data['url'] ?? route('notifications.index');
+        $appHost = parse_url(config('app.url'), PHP_URL_HOST);
+        $targetHost = parse_url($url, PHP_URL_HOST);
+
+        if ($targetHost && $targetHost !== $appHost) {
+            $url = route('notifications.index');
+        }
+
+        return redirect($url);
     }
 
     public function markAllAsRead(Request $request)

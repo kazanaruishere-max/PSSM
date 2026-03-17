@@ -41,6 +41,12 @@ class SubmissionController extends Controller
      */
     public function grade(GradeSubmissionRequest $request, Submission $submission)
     {
+        // Fix #2: IDOR protection — ensure teacher owns this assignment
+        $user = $request->user();
+        if (!$user->hasRole('super_admin') && $submission->assignment->teacher_id !== $user->id) {
+            abort(403, 'Anda tidak berhak menilai tugas ini.');
+        }
+
         $data = $request->validated();
         
         $submission->update([

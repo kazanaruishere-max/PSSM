@@ -17,9 +17,10 @@ class AIService
 
     public function __construct()
     {
-        $this->apiKey  = env('OPENROUTER_API_KEY', '');
-        $this->baseUrl = 'https://openrouter.ai/api/v1';
-        $this->model   = env('OPENROUTER_MODEL', 'anthropic/claude-3.5-sonnet');
+        // Fix #4: Use config() instead of env() — env() returns null after config:cache
+        $this->apiKey  = config('services.openrouter.api_key', '');
+        $this->baseUrl = config('services.openrouter.base_url', 'https://openrouter.ai/api/v1');
+        $this->model   = config('services.openrouter.model', 'anthropic/claude-3.5-sonnet');
     }
 
     /**

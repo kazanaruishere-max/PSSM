@@ -32,7 +32,10 @@ class ReportController extends Controller
             })
             ->get();
 
-        $fileName = "Nilai_Tugas_{$assignment->title}_{$assignment->class->name}.csv";
+        // Fix #10: Sanitize filename to prevent HTTP header injection
+        $safeTitle = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $assignment->title);
+        $safeClass = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $assignment->class->name);
+        $fileName = "Nilai_Tugas_{$safeTitle}_{$safeClass}.csv";
 
         $headers = [
             "Content-type"        => "text/csv",
@@ -82,7 +85,10 @@ class ReportController extends Controller
         $quiz->load('subject', 'class');
         $attempts = $quiz->attempts()->with('student')->orderBy('student_id')->orderBy('attempt_number')->get();
 
-        $fileName = "Nilai_Kuis_{$quiz->title}_{$quiz->class->name}.csv";
+        // Fix #10: Sanitize filename to prevent HTTP header injection
+        $safeTitle = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $quiz->title);
+        $safeClass = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $quiz->class->name);
+        $fileName = "Nilai_Kuis_{$safeTitle}_{$safeClass}.csv";
 
         $headers = [
             "Content-type"        => "text/csv",
