@@ -1,147 +1,107 @@
-# PSSM — Powered Smart School Management
+# PSSM - Powered Smart School Management 🚀
+### "Zero Paper, AI-Powered, Enterprise-Grade Education System"
 
-> *"Digitalisasi Sekolah dalam 1 Platform"*
-
-**Framework:** Laravel 11 · **PHP:** 8.3+ · **Database:** PostgreSQL 16 · **Cache:** Redis 7  
-**Target:** Sekolah menengah & atas di Indonesia  
-**Timeline:** 8 minggu (MVP) · **Budget:** Rp 0 (free tier)
-
----
-
-## ✨ Core Features
-
-- 🤖 **AI-Powered Quiz Generator** — Generate kuis otomatis dari topik apapun
-- 📝 **Assignment Management** — Buat, submit, dan nilai tugas secara digital
-- 📊 **Real-time Analytics** — Dashboard performa siswa, kelas, dan sekolah
-- 📋 **Attendance System** — Absensi digital dengan rekap otomatis
-- 🔔 **Multi-channel Notifications** — Email, WhatsApp, in-app
-- 📁 **Export Reports** — Excel & PDF untuk raport dan rekap nilai
-- 🔐 **Role-Based Access** — 4 role: Super Admin, Guru, Ketua Kelas, Siswa
+![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
+![Laravel](https://img.shields.io/badge/Framework-Laravel%2012-FF2D20?logo=laravel)
+![TailwindCSS](https://img.shields.io/badge/Styling-TailwindCSS-38B2AC?logo=tailwind-css)
+![AI](https://img.shields.io/badge/AI-Google%20Gemini-blue?logo=google-gemini)
 
 ---
 
-## 📂 Folder Dokumentasi
+## 📖 Jurnal Proyek: Transformasi Digital Pendidikan Indonesia
+**Author:** Kazanaru  
+**Status:** MVP (Minimum Viable Product) Matang  
+**Versi:** 1.0.0 (Core Engine)
 
-```
-PSSM/
-├── README.md                          ← Anda di sini
-│
-├── docs/
-│   ├── 01-product/                    # Kebutuhan Produk
-│   │   └── PSSM-PRD.md               # Product Requirements Document
-│   │
-│   ├── 02-architecture/               # Arsitektur & Data Model
-│   │   ├── PSSM-DesignDoc.md          # Technical architecture & workflows
-│   │   ├── PSSM-TechStack.md          # Technology stack & setup guide
-│   │   └── PSSM-DatabaseDictionary.md # Data dictionary (17 tabel)
-│   │
-│   ├── 03-development/                # Development & API
-│   │   ├── PSSM-MasterWorkflow.md     # Master workflow (7 fase)
-│   │   ├── PSSM-APIReference.md       # REST API specification
-│   │   ├── PSSM-TestingStrategy.md    # Testing plan & CI/CD
-│   │   └── PSSM-ProjectStructure.md   # Laravel folder structure
-│   │
-│   ├── 04-security/                   # Security & Operations
-│   │   ├── PSSM-SecurityHardening.md  # 27 security fixes & patches
-│   │   └── PSSM-DisasterRecovery.md   # Backup & incident response
-│   │
-│   └── 05-guides/                     # Panduan Pengguna
-│       └── PSSM-UserGuide.md          # Guide untuk guru, siswa, admin
-│
-└── (Laravel project files akan di sini setelah development dimulai)
-```
+### **Abstrak**
+Dalam era Industri 4.0, institusi pendidikan di Indonesia masih menghadapi tantangan besar dalam efisiensi administrasi dan adaptasi teknologi cerdas. **PSSM (Powered Smart School Management)** hadir sebagai solusi komprehensif yang tidak hanya mendigitalisasi data ("Zero Paper"), tetapi juga mengintegrasikan Kecerdasan Buatan (AI) untuk membantu guru dalam proses pedagogik yang repetitif seperti pembuatan kuis dan analisis esai.
+
+### **Latar Belakang & Masalah**
+1. **Beban Kerja Guru:** Guru menghabiskan 40% waktu mereka untuk tugas administratif daripada mengajar.
+2. **Keamanan Data:** Banyak sistem sekolah yang rentan terhadap penyusup dan kebocoran nilai.
+3. **Fragmentasi Data:** Informasi tugas, absensi, dan pengumuman sering tersebar di berbagai platform (WA, Grup, dll).
 
 ---
 
-## 📖 Urutan Baca Dokumentasi
+## ✨ Fitur Unggulan (USP)
 
-| Urutan | Dokumen | Untuk Siapa |
-|:------:|---------|-------------|
-| 1 | [PRD](docs/01-product/PSSM-PRD.md) | Semua stakeholder |
-| 2 | [DesignDoc](docs/02-architecture/PSSM-DesignDoc.md) | Developer |
-| 3 | [TechStack](docs/02-architecture/PSSM-TechStack.md) | Developer |
-| 4 | [DatabaseDictionary](docs/02-architecture/PSSM-DatabaseDictionary.md) | Developer |
-| 5 | [MasterWorkflow](docs/03-development/PSSM-MasterWorkflow.md) | Developer (⭐ mulai coding dari sini) |
-| 6 | [APIReference](docs/03-development/PSSM-APIReference.md) | Frontend & Backend Dev |
-| 7 | [ProjectStructure](docs/03-development/PSSM-ProjectStructure.md) | Developer |
-| 8 | [SecurityHardening](docs/04-security/PSSM-SecurityHardening.md) | Developer & DevOps |
-| 9 | [TestingStrategy](docs/03-development/PSSM-TestingStrategy.md) | Developer & QA |
-| 10 | [DisasterRecovery](docs/04-security/PSSM-DisasterRecovery.md) | DevOps & Admin |
-| 11 | [UserGuide](docs/05-guides/PSSM-UserGuide.md) | Guru, Siswa, Admin Sekolah |
+### 🤖 **Smart Academy (AI Integration)**
+*   **AI Quiz Generator:** Membuat soal pilihan ganda secara otomatis berdasarkan topik tertentu menggunakan Google Gemini API.
+*   **AI Essay Feedback:** Memberikan saran perbaikan tata bahasa, struktur, dan kekuatan argumen pada jawaban esai siswa secara instan.
 
----
+### 🏫 **Manajemen Akademik Terintegrasi**
+*   **Digital Attendance:** Absensi real-time yang dapat diinput oleh Guru atau Ketua Kelas dengan audit trail lengkap.
+*   **CBT (Computer Based Test):** Sistem ujian online profesional dengan timer presisi dan perlindungan anti-contek (disable text selection/hashing answers).
+*   **Smart Dashboard:** Visualisasi data menggunakan Chart.js untuk memantau tren kehadiran dan progres nilai siswa.
 
-## 🚀 Quick Start
-
-```bash
-# 1. Clone & install
-git clone https://github.com/your-repo/pssm.git && cd pssm
-composer install && npm install
-
-# 2. Environment
-cp .env.example .env
-php artisan key:generate
-
-# 3. Database
-createdb pssm_db
-php artisan migrate --seed
-
-# 4. Run
-npm run dev &
-php artisan serve
-```
-
-> 📋 Detail lengkap → [PSSM-MasterWorkflow.md](docs/03-development/PSSM-MasterWorkflow.md)
+### 🛡️ **Keamanan Tingkat Tinggi (Enterprise Security)**
+*   **Hashed Answer Keys:** Kunci jawaban disimpan dalam bentuk hash Bcrypt, mencegah kebocoran meskipun akses database ditembus.
+*   **RBAC (Role-Based Access Control):** Otorisasi ketat untuk Super Admin, Guru, Ketua Kelas, dan Siswa menggunakan Spatie Laravel Permission.
+*   **Private Storage Disk:** Seluruh dokumen tugas siswa disimpan di storage yang tidak dapat diakses secara publik.
 
 ---
 
-## 🌍 Production Deployment
+## 🛠️ Tech Stack (Arsitektur Teknologi)
 
-Deployment has been automated via `deploy.sh`. Before running the script, ensure your production server meets these requirements:
-
-1. **Environment Variables**:
-   - `APP_ENV=production`
-   - `APP_DEBUG=false`
-   - Cache divers configured (e.g., `CACHE_STORE=redis`)
-   - Queue connection configured (e.g., `QUEUE_CONNECTION=redis`)
-2. **Permissions**: Make the script executable `chmod +x deploy.sh`
-3. **Queue Workers**: Ensure a process monitor like Supervisor is keeping `php artisan queue:work` or `php artisan horizon` running.
-
-To deploy a new update:
-```bash
-./deploy.sh
-```
+| Komponen | Teknologi |
+| :--- | :--- |
+| **Backend** | Laravel 12.x (PHP 8.3+) |
+| **Frontend** | Shadcn UI Style + Tailwind CSS + Alpine.js |
+| **Database** | PostgreSQL / SQLite (Development) |
+| **AI Engine** | Google Gemini API (Generative AI) |
+| **Icons** | Lucide SVG Icons |
+| **PDF Engine** | Barryvdh Laravel DomPDF |
 
 ---
 
-## 📊 Tech Stack Overview
+## 🚀 Panduan Instalasi (Local Development)
 
-| Layer | Technology |
-|-------|-----------|
-| Backend | Laravel 11, PHP 8.3+ |
-| Frontend | Blade, Tailwind CSS v4, Alpine.js |
-| Database | PostgreSQL 16 |
-| Cache/Queue | Redis 7, Laravel Horizon |
-| AI | OpenRouter (Claude/GPT) |
-| Charts | Chart.js |
-| Email | Mailtrap / SendGrid |
-| WhatsApp | Fonnte API |
-| Storage | Cloudflare R2 |
-| Monitoring | Sentry, Laravel Telescope/Pulse |
-| CI/CD | GitHub Actions |
+### **Prasyarat**
+*   PHP >= 8.3
+*   Composer
+*   Node.js & NPM
+*   Gemini API Key (untuk fitur AI)
+
+### **Langkah-langkah**
+1.  **Clone Repository**
+    ```bash
+    git clone https://github.com/kazanaru/pssm.git
+    cd pssm
+    ```
+2.  **Install Dependencies**
+    ```bash
+    composer install
+    npm install
+    ```
+3.  **Environment Setup**
+    ```bash
+    cp .env.example .env
+    php artisan key:generate
+    ```
+4.  **Database Migration & Seeding**
+    ```bash
+    php artisan migrate --seed
+    ```
+5.  **Compile Assets**
+    ```bash
+    npm run build
+    ```
+6.  **Run Server**
+    ```bash
+    php artisan serve
+    ```
 
 ---
 
-## 📄 License & Ownership
+## 📜 Lisensi & Hak Cipta
+Proyek ini didistribusikan di bawah **Lisensi MIT**. Seluruh hak kepemilikan intelektual dan kekayaan intelektual atas kode sumber ini sepenuhnya milik **Kazanaru**.
 
-**MIT License** — © 2026 PSSM Team / Developer (Pembuat).
-
-**Deklarasi Kepemilikan:**
-Seluruh hak kepemilikan (ownership) dan hak kekayaan intelektual atas source code, desain database, arsitektur, dan seluruh dokumen terkait project PSSM ini adalah mutlak dan sepenuhnya milik Pembuat / Developer asli. 
-
-Penggunaan, modifikasi, dan distribusi perangkat lunak ini tunduk pada syarat dan ketentuan dari [MIT License](LICENSE).
+Copyright © 2026 **Kazanaru**.
 
 ---
 
-**Total Dokumen:** 11 files · **Total Size:** ~200 KB  
-**Status:** ✅ Ready for Development
+## 📧 Kontak & Kontribusi
+Jika Anda tertarik untuk berkolaborasi atau memiliki pertanyaan mengenai implementasi PSSM di sekolah Anda, silakan hubungi pengembang melalui profil GitHub ini.
+
+---
+*"PSSM: Empowering Teachers, Elevating Students."*

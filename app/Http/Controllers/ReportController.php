@@ -4,8 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Models\Assignment;
 use App\Models\Quiz;
+use App\Models\Classes;
+use App\Models\User;
+use App\Models\Submission;
 use Illuminate\Http\Request;
 use Symfony\Component\HttpFoundation\StreamedResponse;
+use Barryvdh\DomPDF\Facade\Pdf;
+use Illuminate\Support\Facades\DB;
 
 class ReportController extends Controller
 {
@@ -122,5 +127,71 @@ class ReportController extends Controller
         };
 
         return response()->stream($callback, 200, $headers);
+    }
+
+    /**
+     * Export student report card to PDF.
+     */
+    public function exportReportCard(Request $request, Classes $class, User $student)
+    {
+        // Only student's teacher, admin, or student themselves can access
+        $user = $request->user();
+        if (!$user->hasRole('super_admin') && 
+            $class->homeroom_teacher_id !== $user->id && 
+            $student->id !== $user->id) {
+            abort(403);
+        }
+
+        $class->load(['academicYear', 'homeroomTeacher', 'subjects']);
+        $student->load('studentProfile');
+
+        // Calculate grades for each subject in this class
+        $grades = [];
+        foreach ($class->subjects as $subject) {
+            // Average from assignments
+            $assignmentAvg = Submission::where('student_id', $student->id)
+                ->whereHas('assignment', function($q) use ($class, $subject) {
+                    $q->where('class_id', $class->id)->where('subject_id', $subject->id);
+                })
+                ->whereNotNull('score')
+                ->avg('score');
+
+            // Average from quizzes
+            $quizAvg = DB::table('quiz_attempts')
+                ->join('quizzes', 'quiz_attempts.quiz_id', '=', 'quizzes.id')
+                ->where('quiz_attempts.student_id', $student->id)
+                ->where('quizzes.class_id', $class->id)
+                ->where('quizzes.subject_id', $subject->id)
+                ->whereNotNull('quiz_attempts.score')
+                ->avg('quiz_attempts.score');
+
+            $finalScore = 0;
+            if ($assignmentAvg && $quizAvg) {
+                $finalScore = ($assignmentAvg * 0.6) + ($quizAvg * 0.4); // 60% Tugas, 40% Kuis
+            } elseif ($assignmentAvg) {
+                $finalScore = $assignmentAvg;
+            } elseif ($quizAvg) {
+                $finalScore = $quizAvg;
+            }
+
+            $finalScore = round($finalScore, 2);
+            
+            $predicate = 'C';
+            if ($finalScore >= 85) $predicate = 'A (Sangat Baik)';
+            elseif ($finalScore >= 75) $predicate = 'B (Baik)';
+            elseif ($finalScore >= 60) $predicate = 'C (Cukup)';
+            else $predicate = 'D (Perlu Bimbingan)';
+
+            $grades[] = [
+                'subject_name' => $subject->name,
+                'average_score' => $finalScore ?: '-',
+                'predicate' => $predicate
+            ];
+        }
+
+        $pdf = Pdf::loadView('pdf.report_card', compact('student', 'class', 'grades'));
+        
+        $safeName = preg_replace('/[^a-zA-Z0-9_\-]/', '_', $student->name);
+        return $pdf->download("Rapor_{$safeName}.pdf");
     }
 }

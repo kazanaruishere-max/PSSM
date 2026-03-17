@@ -69,7 +69,7 @@ class AssignmentController extends Controller
         $data['teacher_id'] = $request->user()->id;
 
         if ($request->hasFile('attachment')) {
-            $path = $request->file('attachment')->store('assignments/attachments', 'public');
+            $path = $request->file('attachment')->store('assignments/attachments', 'private');
             $data['attachment_path'] = $path;
         }
 
@@ -158,9 +158,9 @@ class AssignmentController extends Controller
         if ($request->hasFile('attachment')) {
             // Delete old file if exists
             if ($assignment->attachment_path) {
-                Storage::disk('public')->delete($assignment->attachment_path);
+                Storage::disk('private')->delete($assignment->attachment_path);
             }
-            $path = $request->file('attachment')->store('assignments/attachments', 'public');
+            $path = $request->file('attachment')->store('assignments/attachments', 'private');
             $data['attachment_path'] = $path;
         }
 
@@ -168,6 +168,27 @@ class AssignmentController extends Controller
 
         return redirect()->route('assignments.show', $assignment)
             ->with('success', 'Tugas berhasil diubah.');
+    }
+
+    /**
+     * Download the attachment for an assignment.
+     */
+    public function download(Request $request, Assignment $assignment)
+    {
+        $user = $request->user();
+
+        // If student, check if they belong to the class
+        if ($user->hasRole('student') || $user->hasRole('class_leader')) {
+            if (!$user->classes()->where('classes.id', $assignment->class_id)->exists()) {
+                abort(403);
+            }
+        }
+
+        if (!$assignment->attachment_path || !Storage::disk('private')->exists($assignment->attachment_path)) {
+            abort(404, 'File lampiran tidak ditemukan.');
+        }
+
+        return Storage::disk('private')->download($assignment->attachment_path);
     }
 
     /**

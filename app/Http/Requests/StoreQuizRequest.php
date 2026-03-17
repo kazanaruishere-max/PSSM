@@ -23,6 +23,7 @@ class StoreQuizRequest extends FormRequest
             'start_time' => ['required', 'date', 'before:end_time'],
             'end_time' => ['required', 'date', 'after:start_time'],
             'max_attempts' => ['required', 'integer', 'min:1', 'max:5'],
+            'is_published' => ['boolean'],
             
             // AI Generation fields
             'is_ai_generated' => ['boolean'],

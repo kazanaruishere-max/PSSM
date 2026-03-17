@@ -13,21 +13,46 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+
+        <style>
+            /* Ensure text is always visible on light background, even if browser forces dark mode colors */
+            body {
+                color: #1a202c !important; /* text-gray-900 */
+                background-color: #f7fafc !important; /* bg-gray-100 */
+            }
+            .bg-white {
+                background-color: #ffffff !important;
+            }
+            .text-gray-800 {
+                color: #2d3748 !important;
+            }
+            .text-gray-700 {
+                color: #4a5568 !important;
+            }
+            .text-gray-600 {
+                color: #718096 !important;
+            }
+            .text-gray-500 {
+                color: #a0aec0 !important;
+            }
+        </style>
     </head>
     <body class="font-sans text-gray-900 antialiased">
-        <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-gray-100">
-            <div>
+        <div class="min-h-screen flex flex-col sm:justify-center items-center p-4 sm:p-0 bg-gradient-to-br from-indigo-50 via-white to-purple-50">
+            <div class="mb-6 transform hover:rotate-12 transition-transform duration-500">
                 <a href="/">
-                    <x-application-logo class="w-20 h-20 fill-current text-gray-500" />
+                    <x-application-logo class="w-24 h-24 fill-current text-indigo-600 drop-shadow-2xl" />
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md mt-6 px-6 py-4 bg-white shadow-md overflow-hidden sm:rounded-lg">
+            <div class="w-full sm:max-w-md bg-white/80 backdrop-blur-xl shadow-2xl shadow-indigo-100 overflow-hidden rounded-3xl border border-white p-8">
                 {{ $slot }}
             </div>
-            <div class="mt-8 text-center text-sm text-gray-500 pb-8">
-                &copy; {{ date('Y') }} PSSM. Hak Cipta Dilindungi Undang-Undang.<br>
-                Hak kepemilikan penuh berada pada Pembuat/Developer. Berlisensi MIT.
+            
+            <div class="mt-12 text-center">
+                <p class="text-[10px] font-black text-gray-400 uppercase tracking-[0.2em]">
+                    &copy; {{ date('Y') }} PSSM - POWERED SMART SCHOOL MANAGEMENT
+                </p>
             </div>
         </div>
     </body>

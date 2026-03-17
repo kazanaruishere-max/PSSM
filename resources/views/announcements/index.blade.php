@@ -1,85 +1,106 @@
 <x-app-layout>
-    <x-slot name="header">
-        <div class="flex justify-between items-center">
-            <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-                {{ __('Pengumuman & Informasi') }}
-            </h2>
+    @section('header_title', 'Pusat Informasi & Pengumuman')
+
+    <div class="space-y-8">
+        <!-- Action Bar -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <div class="flex items-center space-x-4">
+                <div class="p-3 bg-amber-50 rounded-2xl text-amber-600">
+                    <i class="fas fa-bullhorn text-2xl"></i>
+                </div>
+                <div>
+                    <h3 class="text-xl font-black text-gray-900 leading-tight">Mading Digital PSSM</h3>
+                    <p class="text-xs text-gray-500 font-bold uppercase tracking-widest">Informasi Terkini Akademik & Sekolah</p>
+                </div>
+            </div>
             @if(!auth()->user()->isStudent())
-            <a href="{{ route('announcements.create') }}" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-2 px-4 rounded inline-flex items-center text-sm">
-                <svg class="w-4 h-4 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-                Buat Pengumuman
-            </a>
+                <a href="{{ route('announcements.create') }}" class="w-full md:w-auto btn-primary">
+                    <i class="fas fa-plus mr-2"></i> BUAT PENGUMUMAN
+                </a>
             @endif
         </div>
-    </x-slot>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8 space-y-6">
-            
-            @if(session('success'))
-                <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
-                    {{ session('success') }}
-                </div>
-            @endif
+        @if(session('success'))
+            <div class="bg-green-50 border-l-4 border-green-500 p-4 rounded-xl flex items-center shadow-sm">
+                <i class="fas fa-check-circle text-green-500 mr-3 text-xl"></i>
+                <p class="text-green-800 font-bold uppercase tracking-widest text-[10px]">{{ session('success') }}</p>
+            </div>
+        @endif
 
-            <div class="grid grid-cols-1 gap-6">
-                @forelse($announcements as $announcement)
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg border-l-4 {{ $announcement->priority === 'high' ? 'border-red-500' : ($announcement->priority === 'normal' ? 'border-blue-500' : 'border-gray-500') }}">
-                        <div class="p-6">
-                            <div class="flex justify-between items-start mb-4">
+        <div class="grid grid-cols-1 gap-8">
+            @forelse($announcements as $announcement)
+                <div class="card-modern overflow-hidden group">
+                    <div class="flex flex-col md:flex-row">
+                        <!-- Left Decoration / Icon -->
+                        <div class="w-full md:w-20 {{ $announcement->priority === 'high' ? 'bg-red-500' : ($announcement->priority === 'normal' ? 'bg-indigo-500' : 'bg-slate-400') }} flex items-center justify-center text-white py-4 md:py-0">
+                            <i class="fas {{ $announcement->priority === 'high' ? 'fa-exclamation-triangle animate-bounce' : 'fa-info-circle' }} text-2xl"></i>
+                        </div>
+                        
+                        <div class="flex-1 p-8">
+                            <div class="flex flex-col md:flex-row justify-between items-start gap-4 mb-6">
                                 <div>
-                                    <h3 class="text-lg font-bold text-gray-900 flex items-center gap-2">
-                                        {{ $announcement->title }}
-                                        
+                                    <div class="flex flex-wrap items-center gap-2 mb-3">
                                         @if($announcement->priority === 'high')
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-red-100 text-red-800">
-                                                Penting
-                                            </span>
+                                            <span class="badge badge-red ring-4 ring-red-50">URGENT</span>
                                         @endif
                                         @if(empty($announcement->class_id))
-                                            <span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-purple-100 text-purple-800">
-                                                Global
-                                            </span>
+                                            <span class="badge badge-indigo">PENGUMUMAN GLOBAL</span>
+                                        @else
+                                            <span class="badge badge-purple">KHUSUS KELAS {{ $announcement->class_->name }}</span>
                                         @endif
+                                        <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest"><i class="far fa-clock mr-1"></i> {{ $announcement->created_at->translatedFormat('d M Y, H:i') }}</span>
+                                    </div>
+                                    <h3 class="text-2xl font-black text-slate-900 tracking-tight leading-tight group-hover:text-indigo-600 transition-colors">
+                                        {{ $announcement->title }}
                                     </h3>
-                                    <p class="text-sm text-gray-500 mt-1">
-                                        Oleh: {{ $announcement->author->name }} ({{ $announcement->author->role === 'super_admin' ? 'Admin' : 'Guru' }})
-                                        &bull; 
-                                        @if($announcement->class_id)
-                                            Untuk Kelas: <strong>{{ $announcement->class_->name }} ({{ $announcement->class_->academicYear->name }})</strong> &bull;
-                                        @endif
-                                        Diterbitkan: {{ $announcement->created_at->translatedFormat('d F Y, H:i') }}
-                                    </p>
                                 </div>
                                 
                                 @if(auth()->user()->isAdmin() || (auth()->user()->isTeacher() && $announcement->author_id === auth()->id()))
-                                    <form action="{{ route('announcements.destroy', $announcement) }}" method="POST" onsubmit="return confirm('Anda yakin ingin menghapus pengumuman ini?');">
+                                    <form action="{{ route('announcements.destroy', $announcement) }}" method="POST" onsubmit="return confirm('Hapus pengumuman ini?');">
                                         @csrf @method('DELETE')
-                                        <button type="submit" class="text-red-500 hover:text-red-700 text-sm font-semibold">
-                                            Hapus
+                                        <button type="submit" class="p-3 bg-red-50 text-red-500 rounded-2xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                                            <i class="fas fa-trash-alt text-sm"></i>
                                         </button>
                                     </form>
                                 @endif
                             </div>
 
-                            <div class="text-gray-700 prose max-w-none">
+                            <div class="text-slate-600 font-medium leading-relaxed prose prose-slate max-w-none mb-8">
                                 {!! nl2br(e($announcement->content)) !!}
+                            </div>
+
+                            <div class="flex items-center justify-between pt-6 border-t border-slate-50">
+                                <div class="flex items-center space-x-3">
+                                    <div class="w-10 h-10 rounded-xl bg-slate-100 flex items-center justify-center font-black text-slate-400 text-xs">
+                                        {{ substr($announcement->author->name, 0, 1) }}
+                                    </div>
+                                    <div>
+                                        <p class="text-xs font-black text-slate-900 leading-none">{{ $announcement->author->name }}</p>
+                                        <p class="text-[9px] font-black text-slate-400 uppercase tracking-widest mt-1">{{ $announcement->author->role === 'super_admin' ? 'Administrator' : 'Guru Pengampu' }}</p>
+                                    </div>
+                                </div>
+                                <div class="hidden sm:block">
+                                    <p class="text-[9px] font-black text-slate-300 uppercase tracking-[0.2em]">Dipublikasikan Melalui PSSM Core</p>
+                                </div>
                             </div>
                         </div>
                     </div>
-                @empty
-                    <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                        <div class="p-6 text-gray-500 text-center italic">
-                            Belum ada pengumuman saat ini.
-                        </div>
+                </div>
+            @empty
+                <div class="card-modern p-20 text-center flex flex-col items-center">
+                    <div class="w-24 h-24 bg-slate-50 rounded-full flex items-center justify-center text-slate-200 mb-6">
+                        <i class="fas fa-newspaper text-5xl"></i>
                     </div>
-                @endforelse
-            </div>
+                    <h4 class="text-xl font-black text-slate-900 mb-2 italic">Belum Ada Kabar Baru</h4>
+                    <p class="text-slate-400 font-medium text-sm">Tetap pantau halaman ini untuk mendapatkan informasi terbaru dari sekolah.</p>
+                </div>
+            @endforelse
+        </div>
 
-            <div class="mt-4">
+        @if($announcements->hasPages())
+            <div class="pt-8">
                 {{ $announcements->links() }}
             </div>
-
-        </div>
+        @endif
     </div>
 </x-app-layout>

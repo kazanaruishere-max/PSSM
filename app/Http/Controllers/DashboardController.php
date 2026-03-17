@@ -38,10 +38,21 @@ class DashboardController extends Controller
             'active_quizzes' => Quiz::where('end_time', '>', now())->count(),
         ];
 
-        // For simple chart integration later
+        // Monthly registration data for Chart.js
+        $monthlyUsers = User::select(DB::raw('count(id) as total'), DB::raw("to_char(created_at, 'Mon') as month"))
+            ->where('created_at', '>=', now()->subMonths(6))
+            ->groupBy('month')
+            ->orderBy(DB::raw("min(created_at)"))
+            ->get();
+
+        $chartData = [
+            'labels' => $monthlyUsers->pluck('month'),
+            'data' => $monthlyUsers->pluck('total'),
+        ];
+
         $recentClasses = Classes::withCount('students')->latest()->take(5)->get();
 
-        return view('dashboard.super_admin', compact('stats', 'recentClasses'));
+        return view('dashboard.super_admin', compact('stats', 'recentClasses', 'chartData'));
     }
 
     private function teacherDashboard(User $user)
@@ -64,17 +75,25 @@ class DashboardController extends Controller
                                 ->where('end_time', '>=', now())
                                 ->count();
 
+        // Submission rate data for Chart.js
         $recentAssignments = Assignment::where('teacher_id', $user->id)
+                                ->withCount('submissions')
                                 ->latest()
                                 ->take(5)
                                 ->get();
+        
+        $chartData = [
+            'labels' => $recentAssignments->pluck('title'),
+            'data' => $recentAssignments->pluck('submissions_count'),
+        ];
 
         return view('dashboard.teacher', compact(
             'classesCount', 
             'pendingGrading', 
             'activeAssignments', 
             'activeQuizzes',
-            'recentAssignments'
+            'recentAssignments',
+            'chartData'
         ));
     }
 
@@ -100,6 +119,7 @@ class DashboardController extends Controller
 
         // Active Quizzes
         $activeQuizzes = Quiz::whereIn('class_id', $classIds)
+            ->published()
             ->where('start_time', '<=', now())
             ->where('end_time', '>=', now())
             ->with(['subject', 'teacher'])

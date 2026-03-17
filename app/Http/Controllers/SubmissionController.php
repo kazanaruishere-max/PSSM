@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\GradeSubmissionRequest;
 use App\Models\Assignment;
 use App\Models\Submission;
+use App\Services\AIService;
 use App\Services\SubmissionService;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -12,8 +13,10 @@ use Illuminate\Validation\ValidationException;
 
 class SubmissionController extends Controller
 {
-    public function __construct(private SubmissionService $submissionService)
-    {
+    public function __construct(
+        private SubmissionService $submissionService,
+        private AIService $aiService
+    ) {
     }
 
     /**
@@ -58,6 +61,37 @@ class SubmissionController extends Controller
 
         return redirect()->route('assignments.show', $submission->assignment_id)
             ->with('success', 'Nilai berhasil disimpan.');
+    }
+
+    /**
+     * Generate AI-powered feedback for an essay submission.
+     */
+    public function generateAIFeedback(Request $request, Submission $submission)
+    {
+        $user = $request->user();
+        
+        // Security check: Only teacher of this assignment or admin
+        if (!$user->hasRole('super_admin') && $submission->assignment->teacher_id !== $user->id) {
+            abort(403, 'Unauthorized.');
+        }
+
+        if (empty($submission->content)) {
+            return back()->with('error', 'Tidak ada teks essay untuk dianalisis AI.');
+        }
+
+        try {
+            $feedback = $this->aiService->generateEssayFeedback(
+                $submission->content,
+                $submission->assignment->title,
+                $submission->assignment->description ?? ''
+            );
+
+            $submission->update(['ai_feedback' => $feedback]);
+
+            return back()->with('success', 'Feedback AI berhasil dihasilkan.');
+        } catch (\Exception $e) {
+            return back()->with('error', 'Gagal memanggil AI: ' . $e->getMessage());
+        }
     }
 
     /**

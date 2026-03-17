@@ -35,6 +35,11 @@ class Quiz extends Model
     public function questions() { return $this->hasMany(QuizQuestion::class); }
     public function attempts() { return $this->hasMany(QuizAttempt::class); }
 
+    public function scopePublished($query)
+    {
+        return $query->where('is_published', true);
+    }
+
     public function isAvailable(): bool
     {
         $now = now();

@@ -35,11 +35,16 @@ return [
         ],
     ],
 
-    // Fix #14: Centralized OpenRouter AI config (required for config:cache)
-    'openrouter' => [
-        'api_key' => env('OPENROUTER_API_KEY', ''),
-        'base_url' => env('OPENROUTER_BASE_URL', 'https://openrouter.ai/api/v1'),
-        'model' => env('OPENROUTER_MODEL', 'anthropic/claude-3.5-sonnet'),
+    // Fix #14: Centralized Gemini AI config (required for config:cache)
+    'gemini' => [
+        'api_key' => env('GEMINI_API_KEY', ''),
+        'base_url' => env('GEMINI_BASE_URL', 'https://generativelanguage.googleapis.com/v1beta/openai'),
+        'model' => env('GEMINI_MODEL', 'gemini-2.5-flash'),
+    ],
+
+    'fonnte' => [
+        'api_key' => env('FONNTE_API_KEY', ''),
+        'base_url' => env('FONNTE_BASE_URL', 'https://api.fonnte.com'),
     ],
 
 ];

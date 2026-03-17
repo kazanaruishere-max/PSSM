@@ -1,0 +1,1 @@
+<?php \Spatie\Permission\Models\Permission::firstOrCreate(['name' => 'master_data.manage']); \Spatie\Permission\Models\Role::firstOrCreate(['name' => 'super_admin'])->givePermissionTo('master_data.manage');

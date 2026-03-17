@@ -16,19 +16,23 @@ Route::middleware('auth')->group(function () {
 
     // Assignments
     Route::resource('assignments', \App\Http\Controllers\AssignmentController::class);
+    Route::get('/assignments/{assignment}/download', [\App\Http\Controllers\AssignmentController::class, 'download'])->name('assignments.download');
     
     // Submissions
     Route::post('/assignments/{assignment}/submit', [\App\Http\Controllers\SubmissionController::class, 'store'])->name('submissions.store');
     Route::post('/submissions/{submission}/grade', [\App\Http\Controllers\SubmissionController::class, 'grade'])->name('submissions.grade');
+    Route::post('/submissions/{submission}/ai-feedback', [\App\Http\Controllers\SubmissionController::class, 'generateAIFeedback'])->name('submissions.ai-feedback');
     Route::get('/submissions/{submission}/download', [\App\Http\Controllers\SubmissionController::class, 'download'])->name('submissions.download');
     Route::get('/assignments/{assignment}/export', [\App\Http\Controllers\ReportController::class, 'exportAssignmentData'])->name('reports.assignment');
-
+    
     // Quizzes
-    Route::resource('quizzes', \App\Http\Controllers\QuizController::class)->except(['edit', 'update']); // AI generated quizzes usually don't support simple editing immediately
+    Route::resource('quizzes', \App\Http\Controllers\QuizController::class)->except(['edit', 'update']);
     Route::post('/quizzes/{quiz}/take', [\App\Http\Controllers\QuizController::class, 'take'])->name('quizzes.take');
     Route::get('/quizzes/{quiz}/attempt/{attempt}', [\App\Http\Controllers\QuizController::class, 'active'])->name('quizzes.active');
     Route::post('/quizzes/{quiz}/attempt/{attempt}/submit', [\App\Http\Controllers\QuizController::class, 'submit'])->name('quizzes.submit');
     Route::get('/quizzes/{quiz}/export', [\App\Http\Controllers\ReportController::class, 'exportQuizData'])->name('reports.quiz');
+    
+    Route::get('/reports/classes/{class}/student/{student}', [\App\Http\Controllers\ReportController::class, 'exportReportCard'])->name('reports.report-card');
 
     // Announcements Route
     Route::resource('announcements', \App\Http\Controllers\AnnouncementController::class)->only(['index', 'create', 'store', 'destroy']);
@@ -53,6 +57,7 @@ Route::middleware('auth')->group(function () {
         Route::post('classes/{class}/assign-teacher/{subject}', [\App\Http\Controllers\ClassController::class, 'assignTeacher'])->name('classes.assign-teacher');
 
         Route::resource('users', \App\Http\Controllers\UserController::class)->except(['create', 'show', 'edit']);
+        Route::post('users/import', [\App\Http\Controllers\BulkImportController::class, 'importUsers'])->name('users.import');
     });
 });
 

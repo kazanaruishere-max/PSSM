@@ -27,16 +27,17 @@ class QuizController extends Controller
         $user = $request->user();
 
         if ($user->hasRole('super_admin')) {
-            $quizzes = Quiz::with(['teacher', 'class', 'subject'])->latest()->paginate(15);
+            $quizzes = Quiz::with(['teacher', 'class_', 'subject'])->latest()->paginate(15);
         } elseif ($user->hasRole('teacher')) {
             $quizzes = Quiz::where('teacher_id', $user->id)
-                ->with(['class', 'subject'])
+                ->with(['class_', 'subject'])
                 ->latest()
                 ->paginate(15);
         } else {
             $classIds = $user->classes()->pluck('classes.id');
             $quizzes = Quiz::whereIn('class_id', $classIds)
-                ->with(['teacher', 'subject'])
+                ->published()
+                ->with(['teacher', 'class_', 'subject'])
                 ->latest()
                 ->paginate(15);
         }
@@ -74,6 +75,7 @@ class QuizController extends Controller
                 'end_time' => $data['end_time'],
                 'max_attempts' => $data['max_attempts'],
                 'max_score' => $data['max_score'],
+                'is_published' => $request->has('is_published'),
                 'is_ai_generated' => $isAIGenerated,
             ]);
 

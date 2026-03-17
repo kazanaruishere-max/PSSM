@@ -1,3 +1,87 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 100%;
+        --foreground: 222.2 84% 4.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 222.2 84% 4.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 222.2 84% 4.9%;
+        --primary: 222.2 47.4% 11.2%;
+        --primary-foreground: 210 40% 98%;
+        --secondary: 210 40% 96.1%;
+        --secondary-foreground: 222.2 47.4% 11.2%;
+        --muted: 210 40% 96.1%;
+        --muted-foreground: 215.4 16.3% 46.9%;
+        --accent: 210 40% 96.1%;
+        --accent-foreground: 222.2 47.4% 11.2%;
+        --destructive: 0 84.2% 60.2%;
+        --destructive-foreground: 210 40% 98%;
+        --border: 214.3 31.8% 91.4%;
+        --input: 214.3 31.8% 91.4%;
+        --ring: 222.2 84% 4.9%;
+        --radius: 0.5rem;
+    }
+}
+
+@layer components {
+    /* Layout */
+    .pssm-layout {
+        @apply min-h-screen bg-background text-foreground antialiased flex;
+    }
+
+    /* Cards */
+    .card {
+        @apply rounded-xl border border-border bg-card text-card-foreground shadow-sm overflow-hidden;
+    }
+    .card-header { @apply flex flex-col space-y-1.5 p-6; }
+    .card-title { @apply text-2xl font-semibold leading-none tracking-tight; }
+    .card-description { @apply text-sm text-muted-foreground; }
+    .card-content { @apply p-6 pt-0; }
+    .card-footer { @apply flex items-center p-6 pt-0; }
+
+    /* Buttons */
+    .btn {
+        @apply inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 h-10 px-4 py-2;
+    }
+    .btn-primary { @apply bg-primary text-primary-foreground hover:bg-primary/90; }
+    .btn-secondary { @apply bg-secondary text-secondary-foreground hover:bg-secondary/80; }
+    .btn-outline { @apply border border-input bg-background hover:bg-accent hover:text-accent-foreground; }
+    .btn-ghost { @apply hover:bg-accent hover:text-accent-foreground; }
+    .btn-destructive { @apply bg-destructive text-destructive-foreground hover:bg-destructive/90; }
+    .btn-sm { @apply h-9 rounded-md px-3; }
+    .btn-lg { @apply h-11 rounded-md px-8; }
+    .btn-icon { @apply h-10 w-10; }
+
+    /* Forms */
+    .input {
+        @apply flex h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50;
+    }
+    .label { @apply text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70; }
+
+    /* Badges */
+    .badge {
+        @apply inline-flex items-center rounded-full border px-2.5 py-0.5 text-xs font-semibold transition-colors focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-2;
+    }
+    .badge-default { @apply border-transparent bg-primary text-primary-foreground hover:bg-primary/80; }
+    .badge-secondary { @apply border-transparent bg-secondary text-secondary-foreground hover:bg-secondary/80; }
+    .badge-outline { @apply text-foreground; }
+    .badge-destructive { @apply border-transparent bg-destructive text-destructive-foreground hover:bg-destructive/80; }
+
+    /* Tables */
+    .table-container { @apply w-full overflow-auto; }
+    .table { @apply w-full caption-bottom text-sm; }
+    .table-header { @apply [&_tr]:border-b; }
+    .table-body { @apply [&_tr:last-child]:border-0; }
+    .table-row { @apply border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted; }
+    .table-head { @apply h-12 px-4 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0; }
+    .table-cell { @apply p-4 align-middle [&:has([role=checkbox])]:pr-0; }
+}
+
+@layer utilities {
+    .lucide { @apply w-4 h-4 mr-2; }
+}
+
