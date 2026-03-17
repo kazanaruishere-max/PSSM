@@ -1,107 +1,130 @@
 # PSSM - Powered Smart School Management 🚀
-### "Zero Paper, AI-Powered, Enterprise-Grade Education System"
+### "Empowering Education with Artificial Intelligence & Enterprise Security"
 
-![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)
-![Laravel](https://img.shields.io/badge/Framework-Laravel%2012-FF2D20?logo=laravel)
-![TailwindCSS](https://img.shields.io/badge/Styling-TailwindCSS-38B2AC?logo=tailwind-css)
-![AI](https://img.shields.io/badge/AI-Google%20Gemini-blue?logo=google-gemini)
-
----
-
-## 📖 Jurnal Proyek: Transformasi Digital Pendidikan Indonesia
-**Author:** Kazanaru  
-**Status:** MVP (Minimum Viable Product) Matang  
-**Versi:** 1.0.0 (Core Engine)
-
-### **Abstrak**
-Dalam era Industri 4.0, institusi pendidikan di Indonesia masih menghadapi tantangan besar dalam efisiensi administrasi dan adaptasi teknologi cerdas. **PSSM (Powered Smart School Management)** hadir sebagai solusi komprehensif yang tidak hanya mendigitalisasi data ("Zero Paper"), tetapi juga mengintegrasikan Kecerdasan Buatan (AI) untuk membantu guru dalam proses pedagogik yang repetitif seperti pembuatan kuis dan analisis esai.
-
-### **Latar Belakang & Masalah**
-1. **Beban Kerja Guru:** Guru menghabiskan 40% waktu mereka untuk tugas administratif daripada mengajar.
-2. **Keamanan Data:** Banyak sistem sekolah yang rentan terhadap penyusup dan kebocoran nilai.
-3. **Fragmentasi Data:** Informasi tugas, absensi, dan pengumuman sering tersebar di berbagai platform (WA, Grup, dll).
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Laravel](https://img.shields.io/badge/Framework-Laravel%2012-FF2D20?logo=laravel)](https://laravel.com)
+[![AI](https://img.shields.io/badge/AI-Google%20Gemini-blue?logo=google-gemini)](https://ai.google.dev/)
+[![Version](https://img.shields.io/badge/Version-1.0.0--MVP-green)](https://github.com/kazanaru/pssm)
 
 ---
 
-## ✨ Fitur Unggulan (USP)
+## 📖 Jurnal Proyek & Visi
+**Kazanaru** menghadirkan **PSSM**, sebuah ekosistem manajemen sekolah modern yang dirancang untuk menjawab tantangan digitalisasi pendidikan di Indonesia. Fokus utama kami adalah efisiensi operasional guru dan keamanan data siswa yang tidak dapat dikompromi.
 
-### 🤖 **Smart Academy (AI Integration)**
-*   **AI Quiz Generator:** Membuat soal pilihan ganda secara otomatis berdasarkan topik tertentu menggunakan Google Gemini API.
-*   **AI Essay Feedback:** Memberikan saran perbaikan tata bahasa, struktur, dan kekuatan argumen pada jawaban esai siswa secara instan.
-
-### 🏫 **Manajemen Akademik Terintegrasi**
-*   **Digital Attendance:** Absensi real-time yang dapat diinput oleh Guru atau Ketua Kelas dengan audit trail lengkap.
-*   **CBT (Computer Based Test):** Sistem ujian online profesional dengan timer presisi dan perlindungan anti-contek (disable text selection/hashing answers).
-*   **Smart Dashboard:** Visualisasi data menggunakan Chart.js untuk memantau tren kehadiran dan progres nilai siswa.
-
-### 🛡️ **Keamanan Tingkat Tinggi (Enterprise Security)**
-*   **Hashed Answer Keys:** Kunci jawaban disimpan dalam bentuk hash Bcrypt, mencegah kebocoran meskipun akses database ditembus.
-*   **RBAC (Role-Based Access Control):** Otorisasi ketat untuk Super Admin, Guru, Ketua Kelas, dan Siswa menggunakan Spatie Laravel Permission.
-*   **Private Storage Disk:** Seluruh dokumen tugas siswa disimpan di storage yang tidak dapat diakses secara publik.
+### **Problem Statement**
+Institusi pendidikan saat ini seringkali terjebak dalam tumpukan kertas (Paper-based) dan sistem digital yang kaku. Guru kehilangan waktu berharga untuk mengoreksi esai secara manual atau membuat bank soal. PSSM hadir untuk mengotomatisasi hal tersebut.
 
 ---
 
-## 🛠️ Tech Stack (Arsitektur Teknologi)
+## 🗺️ Roadmap Pengembangan (Roadmap)
 
-| Komponen | Teknologi |
-| :--- | :--- |
-| **Backend** | Laravel 12.x (PHP 8.3+) |
-| **Frontend** | Shadcn UI Style + Tailwind CSS + Alpine.js |
-| **Database** | PostgreSQL / SQLite (Development) |
-| **AI Engine** | Google Gemini API (Generative AI) |
-| **Icons** | Lucide SVG Icons |
-| **PDF Engine** | Barryvdh Laravel DomPDF |
+### **Fase 1: Fondasi & MVP (Current ✅)**
+- [x] Arsitektur Multi-role (Admin, Guru, Siswa).
+- [x] Sistem Manajemen Kelas & Akademik.
+- [x] AI Quiz Generator (Multiple Choice).
+- [x] AI Essay Feedback (Analisis Naratif).
+- [x] Export Rapor PDF & Data CSV.
 
----
+### **Fase 2: Interaksi & Mobilitas (Q3 2026 🔜)**
+- [ ] Integrasi WhatsApp Gateway (Fonnte) untuk notifikasi tugas.
+- [ ] Progressive Web App (PWA) untuk akses offline ringan.
+- [ ] Modul Pembayaran SPP Digital.
 
-## 🚀 Panduan Instalasi (Local Development)
-
-### **Prasyarat**
-*   PHP >= 8.3
-*   Composer
-*   Node.js & NPM
-*   Gemini API Key (untuk fitur AI)
-
-### **Langkah-langkah**
-1.  **Clone Repository**
-    ```bash
-    git clone https://github.com/kazanaru/pssm.git
-    cd pssm
-    ```
-2.  **Install Dependencies**
-    ```bash
-    composer install
-    npm install
-    ```
-3.  **Environment Setup**
-    ```bash
-    cp .env.example .env
-    php artisan key:generate
-    ```
-4.  **Database Migration & Seeding**
-    ```bash
-    php artisan migrate --seed
-    ```
-5.  **Compile Assets**
-    ```bash
-    npm run build
-    ```
-6.  **Run Server**
-    ```bash
-    php artisan serve
-    ```
+### **Fase 3: Smart Analytics (Q4 2026 🔜)**
+- [ ] AI Predictive Analytics (Deteksi dini siswa yang berisiko tertinggal).
+- [ ] Parent Portal Mobile App.
 
 ---
 
-## 📜 Lisensi & Hak Cipta
-Proyek ini didistribusikan di bawah **Lisensi MIT**. Seluruh hak kepemilikan intelektual dan kekayaan intelektual atas kode sumber ini sepenuhnya milik **Kazanaru**.
+## 🛠️ Alur Kerja (Workflow)
 
-Copyright © 2026 **Kazanaru**.
+### **1. Workflow Guru (Pembuatan Kuis AI)**
+```mermaid
+graph LR
+    A[Guru Input Topik] --> B{AI Engine}
+    B --> C[Generate Soal JSON]
+    C --> D[Simpan ke DB]
+    D --> E[Siswa Mengerjakan]
+    E --> F[Auto-Grading Hash]
+```
+
+### **2. Workflow Siswa (Ujian CBT)**
+```mermaid
+graph TD
+    Start[Login Siswa] --> Dashboard[Dashboard Aktif]
+    Dashboard --> SelectQuiz[Pilih Kuis]
+    SelectQuiz --> Validation{Cek Sisa Attempt & Waktu}
+    Validation -- Valid --> Interface[CBT Interface Lock]
+    Validation -- Invalid --> Reject[Akses Ditolak]
+    Interface --> Timer[Timer Berjalan]
+    Timer --> Submit[Kirim Jawaban]
+    Submit --> Result[Nilai Muncul Instan]
+```
 
 ---
 
-## 📧 Kontak & Kontribusi
-Jika Anda tertarik untuk berkolaborasi atau memiliki pertanyaan mengenai implementasi PSSM di sekolah Anda, silakan hubungi pengembang melalui profil GitHub ini.
+## 🏗️ Arsitektur Keamanan (Security Architecture)
+
+PSSM menggunakan pendekatan **Security-by-Design**:
+1.  **Hashed Integrity:** Seluruh kunci jawaban kuis tidak disimpan dalam teks biasa, melainkan melalui proses **Bcrypt Hashing**. Kebocoran database tidak akan membocorkan jawaban.
+2.  **Private Vault:** File lampiran tugas disimpan di folder `storage/app/private` yang hanya bisa diakses melalui *Signed Route* Laravel setelah melewati middleware otentikasi.
+3.  **Role-Based Access Control (RBAC):** Implementasi ketat menggunakan Spatie, memastikan siswa tidak memiliki celah untuk menyuntikkan data ke modul guru.
 
 ---
-*"PSSM: Empowering Teachers, Elevating Students."*
+
+## 📊 Flowchart Detail Sistem
+
+### **Sistem Absensi Digital**
+1.  **Mulai:** Guru/Ketua Kelas membuka modul absensi.
+2.  **Pilih:** Memilih Kelas, Mata Pelajaran, dan Tanggal.
+3.  **Input:** Menandai status (Hadir, Izin, Sakit, Alpa).
+4.  **Simpan:** Data masuk ke tabel `attendances` dengan log penginput.
+5.  **Audit:** Super Admin dapat melihat riwayat perubahan data absensi.
+
+---
+
+## 🚀 Panduan Instalasi Profesional
+
+### **Persyaratan Sistem**
+- PHP 8.3 or higher
+- PostgreSQL 16 or SQLite
+- Node.js 20+
+- Redis (Optional for caching)
+
+### **Instalasi Cepat**
+```bash
+# Clone
+git clone https://github.com/kazanaru/pssm.git && cd pssm
+
+# Backend
+composer install
+cp .env.example .env
+php artisan key:generate
+
+# Database
+php artisan migrate --seed
+
+# Frontend (Shadcn Style)
+npm install
+npm run build
+
+# Start
+php artisan serve
+```
+
+---
+
+## 📜 Dokumen Pendukung (Project Documents)
+- [Tata Tertib Kode (Code of Conduct)](CODE_OF_CONDUCT.md)
+- [Panduan Kontribusi (Contributing)](CONTRIBUTING.md)
+- [Kebijakan Keamanan (Security Policy)](SECURITY.md)
+- [Lisensi MIT](LICENSE)
+
+---
+
+## 🤝 Kontribusi & Dukungan
+Proyek ini bersifat open-source. Kami menyambut kontributor yang ingin membantu memajukan pendidikan digital. Silakan buat *Pull Request* atau ajukan *Issue* jika menemukan bug.
+
+---
+**Copyright © 2026 Kazanaru.**  
+*Built with ❤️ for better Indonesian Education.*
