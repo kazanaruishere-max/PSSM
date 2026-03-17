@@ -47,7 +47,11 @@ Route::middleware('auth')->group(function () {
     Route::middleware(['auth', 'role:super_admin'])->prefix('master-data')->group(function () {
         Route::resource('academic-years', \App\Http\Controllers\AcademicYearController::class)->except(['create', 'show', 'edit']);
         Route::resource('subjects', \App\Http\Controllers\SubjectController::class)->except(['create', 'show', 'edit']);
-        Route::resource('classes', \App\Http\Controllers\ClassController::class)->except(['create', 'show', 'edit']);
+        Route::resource('classes', \App\Http\Controllers\ClassController::class)->except(['create', 'edit']);
+        Route::post('classes/{class}/assign-students', [\App\Http\Controllers\ClassController::class, 'assignStudents'])->name('classes.assign-students');
+        Route::delete('classes/{class}/remove-student/{student}', [\App\Http\Controllers\ClassController::class, 'removeStudent'])->name('classes.remove-student');
+        Route::post('classes/{class}/assign-teacher/{subject}', [\App\Http\Controllers\ClassController::class, 'assignTeacher'])->name('classes.assign-teacher');
+
         Route::resource('users', \App\Http\Controllers\UserController::class)->except(['create', 'show', 'edit']);
     });
 });

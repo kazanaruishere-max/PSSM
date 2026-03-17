@@ -66,8 +66,9 @@
                                         </span>
                                     </td>
                                     <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm text-right font-medium">
-                                        <div x-data="{ openEdit: false }">
-                                            <button @click="openEdit = true" class="text-indigo-600 hover:text-indigo-900 mr-3">Edit</button>
+                                        <div x-data="{ openEdit: false }" class="flex justify-end space-x-3">
+                                            <a href="{{ route('classes.show', $class) }}" class="text-green-600 hover:text-green-900 font-semibold">Kelola</a>
+                                            <button @click="openEdit = true" class="text-indigo-600 hover:text-indigo-900">Edit</button>
                                             
                                             <form action="{{ route('classes.destroy', $class) }}" method="POST" class="inline" onsubmit="return confirm('Hapus Kelas ini?');">
                                                 @csrf @method('DELETE')

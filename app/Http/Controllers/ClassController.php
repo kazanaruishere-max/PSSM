@@ -100,6 +100,86 @@ class ClassController extends Controller
         }
     }
 
+    public function show(Request $request, Classes $class)
+    {
+        if ($request->user()->cannot('master_data.manage')) {
+            abort(403);
+        }
+
+        $class->load(['academicYear', 'homeroomTeacher', 'subjects.teachers', 'students.studentProfile']);
+        
+        // Get all active students not already in this class
+        $enrolledStudentIds = $class->students->pluck('id')->toArray();
+        $availableStudents = User::role('student')
+            ->whereNotIn('id', $enrolledStudentIds)
+            ->where('is_active', true)
+            ->with('studentProfile')
+            ->orderBy('name')
+            ->get();
+
+        // Get all active teachers
+        $availableTeachers = User::role('teacher')
+            ->where('is_active', true)
+            ->with('teacherProfile')
+            ->orderBy('name')
+            ->get();
+
+        return view('admin.classes.show', compact('class', 'availableStudents', 'availableTeachers'));
+    }
+
+    public function assignStudents(Request $request, Classes $class)
+    {
+        if ($request->user()->cannot('master_data.manage')) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'student_ids' => 'required|array',
+            'student_ids.*' => 'exists:users,id'
+        ]);
+
+        $class->students()->syncWithoutDetaching($validated['student_ids']);
+
+        return back()->with('success', 'Siswa berhasil ditambahkan ke kelas.');
+    }
+
+    public function removeStudent(Request $request, Classes $class, User $student)
+    {
+        if ($request->user()->cannot('master_data.manage')) {
+            abort(403);
+        }
+
+        $class->students()->detach($student->id);
+
+        return back()->with('success', 'Siswa berhasil dihapus dari kelas.');
+    }
+
+    public function assignTeacher(Request $request, Classes $class, Subject $subject)
+    {
+        if ($request->user()->cannot('master_data.manage')) {
+            abort(403);
+        }
+
+        $validated = $request->validate([
+            'teacher_id' => 'nullable|exists:users,id'
+        ]);
+
+        // Update the pivot table for this class and subject
+        if ($validated['teacher_id']) {
+            DB::table('class_subject')
+                ->where('class_id', $class->id)
+                ->where('subject_id', $subject->id)
+                ->update(['teacher_id' => $validated['teacher_id']]);
+        } else {
+             DB::table('class_subject')
+                ->where('class_id', $class->id)
+                ->where('subject_id', $subject->id)
+                ->update(['teacher_id' => null]);
+        }
+
+        return back()->with('success', 'Wali / Guru Mata Pelajaran berhasil diperbarui.');
+    }
+
     public function destroy(Request $request, Classes $class)
     {
         if ($request->user()->cannot('master_data.manage')) {
